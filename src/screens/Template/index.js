@@ -22,14 +22,14 @@ const templates = [
     id: 1,
     temp: Images.temp1,
     params: {
-      color: '#D8D8D8',
+      color: '#888888',
     },
   },
   {
     id: 2,
     temp: Images.temp2,
     params: {
-      color: '#5CC7DB',
+      color: '#4290cb',
       backgroundId: '1',
     },
   },
@@ -41,21 +41,21 @@ const templates = [
     id: 4,
     temp: Images.temp4,
     params: {
-      color: '#E90000',
+      color: '#9d7b84',
     },
   },
   {
     id: 5,
     temp: Images.temp5,
     params: {
-      color: '#5CC7DB',
+      color: '#4290cb',
     },
   },
   {
     id: 6,
     temp: Images.temp6,
     params: {
-      color: '#5CC7DB',
+      color: '#4290cb',
       backgroundId: '2',
     },
   },

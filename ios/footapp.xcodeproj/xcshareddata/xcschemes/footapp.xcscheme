@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "footapp.app"
+               BuildableName = "Baby Footprints.app"
                BlueprintName = "footapp"
                ReferencedContainer = "container:footapp.xcodeproj">
             </BuildableReference>
@@ -55,7 +55,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "footapp.app"
+            BuildableName = "Baby Footprints.app"
             BlueprintName = "footapp"
             ReferencedContainer = "container:footapp.xcodeproj">
          </BuildableReference>
@@ -72,7 +72,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "footapp.app"
+            BuildableName = "Baby Footprints.app"
             BlueprintName = "footapp"
             ReferencedContainer = "container:footapp.xcodeproj">
          </BuildableReference>

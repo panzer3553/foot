@@ -18,7 +18,7 @@ import {v4 as uuidv4} from 'uuid';
 
 const width = Dimensions.get('window').width;
 
-export default function About({base64}) {
+export default function About({base64, type}) {
   const [resultImage, setResultImage] = React.useState(null);
   const [mask, setMask] = React.useState(null);
   const [loading, setLoading] = React.useState(false);
@@ -28,16 +28,22 @@ export default function About({base64}) {
       setLoading(true);
       const formData = new FormData();
       formData.append('imgBase64', base64);
-      formData.append('color', '#D8D8D8');
-      const result = await fetch('https://footapp-api.hoangdabao.com/getMask', {
-        method: 'POST',
-        body: formData,
-      });
+      formData.append('color', '#888888');
+      const result = await fetch(
+        type === 0
+          ? 'https://footapp-api.hoangdabao.com/getMaskFoot'
+          : 'https://footapp-api.hoangdabao.com/getMask',
+        {
+          method: 'POST',
+          body: formData,
+        },
+      );
       const json = await result.json();
       setResultImage(json.image);
       setMask(json.mask);
       setLoading(false);
     } catch (err) {
+      console.log(err);
       setLoading(false);
     }
   };

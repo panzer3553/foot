@@ -26,6 +26,7 @@ export default function About({navigation}) {
       orientation: 'portrait',
       width: 996,
       height: 1560,
+      fixOrientation: true,
     };
     const data = await camera.current.takePictureAsync(options);
     NavigationUtils.push({
@@ -34,6 +35,7 @@ export default function About({navigation}) {
       isAnimation: false,
       passProps: {
         base64: data.base64,
+        type: tabIndex,
       },
     });
   };
