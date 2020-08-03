@@ -95,7 +95,7 @@ export default function ViewImage({data}) {
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: hasNotch() ? 30 : 15,
+    paddingTop: hasNotch() ? 45 : 15,
   },
   back: {
     height: 60,

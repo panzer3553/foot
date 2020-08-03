@@ -123,7 +123,7 @@ export default function About({
 const styles = StyleSheet.create({
   container: {
     padding: 30,
-    paddingTop: hasNotch() ? 30 : 15,
+    paddingTop: hasNotch() ? 45 : 15,
   },
   text: {
     color: '#fff',

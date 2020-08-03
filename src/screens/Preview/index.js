@@ -29,6 +29,7 @@ export default function About({base64, type}) {
       const formData = new FormData();
       formData.append('imgBase64', base64);
       formData.append('color', '#888888');
+      console.log(formData);
       const result = await fetch(
         type === 0
           ? 'https://footapp-api.hoangdabao.com/getMaskFoot'
@@ -159,8 +160,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   end: {
+    height: hasNotch() ? 75 : 60,
+    paddingTop: hasNotch() ? 15 : 0,
     flexDirection: 'row',
-    height: 60,
     alignItems: 'center',
   },
 });

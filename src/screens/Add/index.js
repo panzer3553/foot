@@ -45,8 +45,9 @@ export default function About({navigation}) {
       <View
         style={{
           flexDirection: 'row',
-          height: 75,
+          height: hasNotch() ? 90 : 75,
           alignItems: 'center',
+          paddingTop: hasNotch() ? 15 : 0,
         }}>
         <TouchableHighlight
           style={{flex: 1, height: 75}}
