@@ -84,7 +84,7 @@ export default function About({
           <Image source={Images.pencil} style={{width: 25, height: 25}} />
         </TouchableOpacity>
         <View style={{flex: 1}} />
-        <Button text="Save" rounded light onPress={onSave} />
+        <Button text="Save" rounded smallLight light onPress={onSave} />
         <Button text="Cancel" rounded onPress={onCancel} />
       </View>
       <View style={{flex: 1, marginVertical: 10, borderRadius: 40}}>
@@ -92,7 +92,6 @@ export default function About({
           <Image
             source={{uri: tempData?.originalImage}}
             style={{flex: 1, width: width - 60, borderRadius: 40}}
-            resizeMode="contain"
           />
         )}
       </View>

@@ -2,9 +2,9 @@ import React from 'react';
 import {Image, View, StyleSheet} from 'react-native';
 import {Text} from './Text';
 
-const Canvas = ({imageStyle, imageSource, text}) => {
+const Canvas = ({imageStyle, imageSource, text, style}) => {
   return (
-    <View style={styles.slide}>
+    <View style={[styles.slide, style]}>
       <Image source={imageSource} style={[styles.image, imageStyle]} />
       {text && (
         <View style={styles.textView}>

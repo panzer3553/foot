@@ -169,7 +169,7 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
   },
   // eslint-disable-next-line react-native/no-unused-styles
-  small: {
+  lLight: {
     flex: 0,
     height: 30,
     width: 70,
@@ -221,6 +221,9 @@ const styles = StyleSheet.create({
   light: {
     backgroundColor: 'rgba(0,0,0, 0.3)',
     borderColor: '#979797',
+  },
+  smallLight: {
+    paddingVertical: 7,
   },
 });
 

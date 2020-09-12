@@ -16,6 +16,11 @@ import {Images} from '../../themes';
 import {NavigationUtils} from '../../navigation';
 import {actions as recordActions} from '../../redux/record';
 import {useDispatch} from 'react-redux';
+import {useDeviceOrientation} from '@react-native-community/hooks';
+import DeviceInfo from 'react-native-device-info';
+import Canvas from '../../components/Canvas';
+
+let isTablet = DeviceInfo.isTablet();
 
 const width = Dimensions.get('window').width;
 
@@ -56,6 +61,24 @@ export default function ViewImage({data}) {
       {cancelable: false},
     );
   };
+
+  const toolbar = (
+    <View style={!isTablet ? styles.toolBar : styles.toolBarTablet}>
+      {[
+        {name: 'pencil', onPress: onEdit},
+        {name: 'share'},
+        {name: 'delete', onPress: onDelete},
+        {name: 'menu'},
+      ].map((e) => (
+        <TouchableOpacity
+          onPress={e.onPress}
+          style={styles.buttonBar}
+          key={e.name}>
+          <Image source={Images[e.name]} />
+        </TouchableOpacity>
+      ))}
+    </View>
+  );
   return (
     <Container style={styles.container} activeIndex={2} theme="dark">
       <View style={styles.navBar}>
@@ -68,26 +91,24 @@ export default function ViewImage({data}) {
           {tempData?.name}
         </Heading2>
       </View>
-      <View style={{flex: 1, alignItems: 'center'}}>
-        <Image
-          source={{uri: tempData?.originalImage}}
-          style={{flex: 1, borderRadius: 20, width: width - 40}}
-        />
-      </View>
-      <View style={styles.toolBar}>
-        {[
-          {name: 'pencil', onPress: onEdit},
-          {name: 'share'},
-          {name: 'delete', onPress: onDelete},
-          {name: 'menu'},
-        ].map((e) => (
-          <TouchableOpacity
-            onPress={e.onPress}
-            style={styles.buttonBar}
-            key={e.name}>
-            <Image source={Images[e.name]} />
-          </TouchableOpacity>
-        ))}
+      <View style={[isTablet && styles.containerTablet, {flex: 1}]}>
+        {isTablet && <View style={{flex: 1}} />}
+        <View
+          style={{
+            flex: 2,
+            alignItems: 'center',
+            marginBottom: isTablet ? 30 : 0,
+          }}>
+          <Image
+            source={{uri: tempData?.originalImage}}
+            style={{
+              flex: 1,
+              borderRadius: 20,
+              width: isTablet ? '100%' : width - 40,
+            }}
+          />
+        </View>
+        {toolbar}
       </View>
     </Container>
   );
@@ -96,6 +117,9 @@ export default function ViewImage({data}) {
 const styles = StyleSheet.create({
   container: {
     paddingTop: hasNotch() ? 45 : 15,
+  },
+  containerTablet: {
+    flexDirection: 'row',
   },
   back: {
     height: 60,
@@ -121,6 +145,15 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0,0,0,0.3)',
     marginVertical: 20,
     marginHorizontal: 20,
+    borderRadius: 20,
+  },
+  toolBarTablet: {
+    height: 400,
+    width: 70,
+    backgroundColor: 'rgba(0,0,0,0.3)',
+    marginVertical: 20,
+    marginHorizontal: 20,
+    paddingVertical: 30,
     borderRadius: 20,
   },
   buttonBar: {

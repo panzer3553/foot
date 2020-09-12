@@ -14,6 +14,7 @@ import {Colors} from '../../themes';
 import LinearGradient from 'react-native-linear-gradient';
 import TabBar from '../TabBar';
 import DeviceInfo from 'react-native-device-info';
+import {useDeviceOrientation} from '@react-native-community/hooks';
 
 let isTablet = DeviceInfo.isTablet();
 
@@ -32,6 +33,8 @@ const Container = ({
   theme,
   showTabBar = true,
 }) => {
+  const orientation = useDeviceOrientation();
+  const isLandscape = orientation.landscape;
   if (awareInput) {
     return (
       <KeyboardAwareScrollView
@@ -131,14 +134,20 @@ const Container = ({
   } else if (theme === 'dark') {
     themeColor = ['#8888BC', '#A2A2E0'];
   }
-  if (isTablet) {
+  if (isTablet && isLandscape) {
     return (
       <LinearGradient
         colors={themeColor}
         style={[{flex: 1, flexDirection: 'row'}]}
         start={start}
         end={end}>
-        {showTabBar && <TabBar activeIndex={activeIndex} theme={theme} />}
+        {showTabBar && (
+          <TabBar
+            activeIndex={activeIndex}
+            theme={theme}
+            isLandscape={isLandscape}
+          />
+        )}
         <View style={[{flex: 1}, style && style]}>{children}</View>
         {loading && (
           <Modal
@@ -165,7 +174,13 @@ const Container = ({
       start={start}
       end={end}>
       <View style={[{flex: 1}, style && style]}>{children}</View>
-      {showTabBar && <TabBar activeIndex={activeIndex} theme={theme} />}
+      {showTabBar && (
+        <TabBar
+          activeIndex={activeIndex}
+          theme={theme}
+          isLandscape={isLandscape}
+        />
+      )}
       {loading && (
         <Modal
           animationType="none"

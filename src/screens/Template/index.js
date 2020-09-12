@@ -119,13 +119,12 @@ export default function About({
       <View style={{flexDirection: 'row', alignItems: 'center'}}>
         <Heading4>{tempData?.name}</Heading4>
         <View style={{flex: 1}} />
-        <Button text="Choose" rounded light onPress={onSave} />
+        <Button text="Choose" rounded smallLight light onPress={onSave} />
         <Button text="Cancel" rounded onPress={onCancel} />
       </View>
       <View style={{flex: 1, marginVertical: 10, borderRadius: 40}}>
         {tempData?.originalImage && (
           <Image
-            resizeMode="contain"
             source={{uri: tempData?.originalImage}}
             style={{flex: 1, width: width - 40, borderRadius: 40}}
           />
